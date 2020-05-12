@@ -1,0 +1,8 @@
+commerce.data:
+  path: '/pagos/data/{node}'
+  defaults:
+    _title: 'Get pagos data'
+    _controller: '\Drupal\commerce\Controller\CommerceController::getData'
+  requirements:
+    _access: 'TRUE'
+    node: \d+

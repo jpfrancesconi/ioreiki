@@ -1,0 +1,30 @@
+.highlighted {
+  background-color: rgb(255, 255, 255);
+  height: 800px;
+  position: relative;
+}
+
+.layout-container.section.clearfix {
+  width: 100vw;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.region.region-highlighted{
+  margin: 0;
+}
+
+#block-hero {
+  width: 100vw;
+}
+
+#block-hero img {
+  width: 100vw;
+  height: 800px;
+}
+
+#block-hero h2 {
+  display: none;
+}

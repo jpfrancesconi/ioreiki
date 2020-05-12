@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * Implements template_preprocess_node().
+ */
+function commerce_preprocess_node(&$variables) {
+  $node = $variables['node'];
+  if ($variables['view_mode'] == 'full' && $node->bundle() == "curso") {
+    //$variables['#attached']['library'][] = 'commerce/commerce';
+    $variables['content']['pagar'] = array(
+      '#markup' => '<div id="app"></div>',
+      '#weight' => 999,
+    );
+  }
+}

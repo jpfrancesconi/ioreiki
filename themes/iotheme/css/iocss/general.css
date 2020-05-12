@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Oswald', sans-serif;
+}
+
+.cursos-disponibles-page {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cursos-disponibles-page .cursos-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cursos-disponibles-page .cursos-description h1{
+  font-size: 28px;
+}
+.cursos-disponibles-page .cursos-description p{
+  font-size: 18px;
+}
+
+.cursos-disponibles-page .view-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.cursos-disponibles-page .view-content .views-row{
+  padding: 5px;
+}
+
+.cursos-disponibles-page .view-content .views-row .views-field-title{
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.cursos-disponibles-page .view-content .views-row .views-field-title a{
+  color: #04cc1d;
+  text-decoration: none;
+}
+
+.cursos-disponibles-page .view-content .views-row .views-field.views-field-field-curso-duracion span{
+  color: #04cc1d;
+}
+.cursos-disponibles-page .view-content .views-row .views-field.views-field-field-curso-precio span{
+  color: #04cc1d;
+}
+/* NODE: curso - Full content  */
+.node--type-curso.node--view-mode-full .field{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
