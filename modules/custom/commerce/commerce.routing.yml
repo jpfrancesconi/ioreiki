@@ -1,3 +1,19 @@
+commerce.payresponse:
+  path: '/mp/payresponse/success'
+  defaults:
+    _controller: '\Drupal\commerce\Controller\CommerceController::getPayDetails'
+    _title: 'Confirmacion de Pago MP'
+  requirements:
+    _access: 'TRUE'
+
+commerce.example_route1:
+  path: '/example_route1'
+  defaults:
+    _controller: '\Drupal\commerce\Controller\CommerceController::getExampleRoute1'
+    _title: 'getExampleRoute1'
+  requirements:
+    _access: 'TRUE'
+
 commerce.data:
   path: '/pagos/data/{node}'
   defaults:
@@ -6,3 +22,27 @@ commerce.data:
   requirements:
     _access: 'TRUE'
     node: \d+
+
+commerce.orden_pago.form:
+  path: '/orden-pago-form/{curso}'
+  defaults:
+    _title: 'Confirmar Suscripcion al Curso'
+    _form: '\Drupal\commerce\Form\OrdenPagoForm'
+  requirements:
+    _access: 'TRUE'
+  options:
+    parameters:
+      curso:
+        type: entity:node
+
+commerce.orden_pago.multistep_form:
+  path: '/orden-pago-multiform/{curso}'
+  defaults:
+    _form: '\Drupal\commerce\Form\OrdenPagoMultistepForm'
+    _title: 'Confirmar Suscripcion al Curso'
+  requirements:
+    _access: 'TRUE'
+  options:
+    parameters:
+      curso:
+        type: entity:node

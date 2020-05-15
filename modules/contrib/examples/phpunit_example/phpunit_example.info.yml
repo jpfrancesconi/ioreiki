@@ -1,0 +1,13 @@
+name: PHPUnit Example
+type: module
+description: Demontrates how to use PHPUnit-based tests.
+package: Example modules
+core: 8.x
+dependencies:
+  - drupal:node
+  - examples:examples
+
+# Information added by Drupal.org packaging script on 2020-04-13
+version: '8.x-1.0+18-dev'
+project: 'examples'
+datestamp: 1586773330

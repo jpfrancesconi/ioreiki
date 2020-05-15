@@ -1,5 +1,13 @@
 <?php
 
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+
+use Drupal\Core\Mail\MailManagerInterface;
+use Drupal\Component\Utility\SafeMarkup;
+use Drupal\Component\Utility\Html;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
 /**
  * Implements template_preprocess_node().
  */
@@ -9,7 +17,57 @@ function commerce_preprocess_node(&$variables) {
     //$variables['#attached']['library'][] = 'commerce/commerce';
     $variables['content']['pagar'] = array(
       '#markup' => '<div id="app"></div>',
-      '#weight' => 999,
+      '#weight' => 998,
+    );
+    
+    /** We have to create the URL to Orden de Pago create form */
+    $link = Link::createFromRoute('Obtener el Curso', 'commerce.orden_pago.multistep_form', ['curso' => $node->id()]);
+
+    $variables['content']['link_to_ordenpago_form'] = array(
+      '#markup' => $link->toString()->getGeneratedLink(),
+      '#weight' => 998,
     );
   }
 }
+
+/**
+* Implements hook_mail().
+*/
+function commerce_mail($key, &$message, $params) {
+ $options = array(
+   'langcode' => $message['langcode'],
+ );
+
+ switch ($key) {
+   case 'finalizar_pago_transferencia':
+     $message['from'] = \Drupal::config('system.site')->get('mail');
+     $message['subject'] = t('REIKI: @title', array('@title' => $params['node_title']), $options);
+     //$message['body'][] = $params['message'];
+     $message['body'][] = Html::escape($params['message']);
+     break;
+ }
+}
+
+/** ALTER FORM: GENERIC - BEGIN ************************************/
+function commerce_form_alter(&$form, &$form_state, $form_id) { 
+  // CASE: TIENDA ************************************************
+  if($form_id == 'node_orden_de_pago_edit_form') {
+    $form['title']['#access'] = false;
+    $form['field_orden_pago_apellidos']['#access'] = false;
+    $form['field_orden_pago_nombres']['#access'] = false;
+    $form['field_orden_pago_documento']['#access'] = false;
+    $form['field_orden_pago_mail']['#access'] = false;
+    $form['field_orden_pago_curso']['#access'] = false;
+    //$form['']['#access'] = false;
+    //Redirect to Cursos Page View
+    $form_state->setRedirect('view.cursos.cursos_page');
+    /*$url = \Drupal\Core\Url::fromRoute('view.cursos.cursos_page');
+    $response = new RedirectResponse($url->toString());
+    $response->send();*/
+  }
+  if($form_id == 'node_orden_de_pago_form') {
+
+  }
+
+}
+/** ALTER FORM: GENERIC - BEGIN ************************************/

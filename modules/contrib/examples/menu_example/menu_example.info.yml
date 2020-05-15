@@ -1,0 +1,12 @@
+name: Menu Example
+type: module
+description: 'An example module showing the main steps to define and handling menu links in Drupal 8 '
+package: 'Example modules'
+core: 8.x
+dependencies:
+  - drupal:examples
+
+# Information added by Drupal.org packaging script on 2020-04-13
+version: '8.x-1.0+18-dev'
+project: 'examples'
+datestamp: 1586773330

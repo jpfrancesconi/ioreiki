@@ -684,7 +684,7 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
  * For example:
  * @code
  * $settings['trusted_host_patterns'] = [
- *   '^www\.example\.com$',
+ *   '^localhost$',
  * ];
  * @endcode
  * will allow the site to only run from www.example.com.
@@ -706,7 +706,11 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
  * will allow the site to run off of all variants of example.com and
  * example.org, with all subdomains included.
  */
-
+$settings['trusted_host_patterns'] = [
+  '^192.168.0.9$',
+  '^192.168.0.7$',
+  '^localhost$',
+];
 /**
  * The default list of directories that will be ignored by Drupal's file API.
  *

@@ -1,7 +1,7 @@
 global-styling:
   version: VERSION
   css:
-    iocss:
+    theme:
       css/iocss/general.css: {}
       css/iocss/navbar.css: {}
       css/iocss/highlighted.css: {}
